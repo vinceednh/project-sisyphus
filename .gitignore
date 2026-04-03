@@ -12,7 +12,7 @@
 /[Uu]ser[Ss]ettings/
 *.log
 
-# By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
+# Blender backup files
 *.blend1
 *.blend1.meta
 
@@ -33,6 +33,9 @@
 
 # Visual Studio cache directory
 .vs/
+
+# VS Code cache directory
+.vscode/*
 
 # Gradle cache directory
 .gradle/
@@ -84,9 +87,6 @@ InitTestScene*.unity*
 /[Aa]ssets/StreamingAssets/aa*
 /[Aa]ssets/AddressableAssetsData/link.xml*
 /[Aa]ssets/Addressables_Temp*
-# By default, Addressables content builds will generate addressables_content_state.bin
-# files in platform-specific subfolders, for example:
-# /Assets/AddressableAssetsData/OSX/addressables_content_state.bin
 /[Aa]ssets/AddressableAssetsData/*/*.bin*
 
 # Visual Scripting auto-generated files
@@ -97,3 +97,30 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Unity 6 Multiplayer Center / Netcode generated files
+/[Aa]ssets/[Mm]ultiplayer[Cc]enter*
+
+# UI Toolkit theme auto-generation
+/[Aa]ssets/UI[Tt]oolkit/UnityThemes*
+
+# TextMeshPro auto-generated resources (Unity adds on first use, causes conflicts)
+/[Aa]ssets/TextMesh Pro/Resources*
+
+# Package Manager cache
+/[Pp]ackages/[Cc]ache/
+
+# NavMesh baked data (each person rebakes locally)
+/[Aa]ssets/**/NavMesh*.asset
+
+# macOS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
