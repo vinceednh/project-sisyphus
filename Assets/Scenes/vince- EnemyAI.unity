@@ -477,6 +477,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: LookSensitivity.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: LookSensitivity.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: GroundLayers.m_Bits
       value: 1
       objectReference: {fileID: 0}
@@ -1213,7 +1221,7 @@ MonoBehaviour:
   speed: 3
   detectionRange: 10
   loseAggroRange: 15
-  stopDistance: 5
+  stopDistance: 2
 --- !u!195 &651279868
 NavMeshAgent:
   m_ObjectHideFlags: 0
