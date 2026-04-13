@@ -30,6 +30,11 @@ public class EnemyBase : MonoBehaviour
                 playerSpotted = true;
             }
             
+            if (distance > loseAggroRange)
+            {
+                playerSpotted = false;
+            }
+
             if (playerSpotted)
             {
                 if (distance > stopDistance)
@@ -46,11 +51,27 @@ public class EnemyBase : MonoBehaviour
 
     protected bool CanSeePlayer()
     {
+        Vector3 start = transform.position + Vector3.up;
         Vector3 direction = player.position - transform.position;
-        if (Physics.Raycast(transform.position, direction, out RaycastHit hit))
+        if (Physics.Raycast(start, direction, out RaycastHit hit))
         {
             return hit.transform.root.CompareTag("Player");
         }
         return false;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        if (player != null)
+        {
+            Gizmos.color = playerSpotted ? Color.red : Color.yellow;
+            Gizmos.DrawLine(transform.position, player.position);
+
+        }
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, stopDistance);
     }
 }
