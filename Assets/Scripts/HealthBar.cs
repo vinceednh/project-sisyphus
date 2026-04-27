@@ -14,34 +14,35 @@ public class HealthBar : MonoBehaviour
         healthBarFillImage.fillAmount = 1f;
     }
 
-    private void IncreaseHealth()
+    public void IncreaseHealth(float healAmount)
     {
         if (currentHealth < maxHealth)
         {
-            currentHealth += 10;
+            currentHealth += healAmount;
             healthBarFillImage.fillAmount = currentHealth / maxHealth;
         }
     }
 
-    private void DecreaseHealth()
+    public void DecreaseHealth(float damageAmount)
     {
         if (currentHealth > 0)
         {
-            currentHealth -= 10;
+            currentHealth -= damageAmount;
             healthBarFillImage.fillAmount = currentHealth / maxHealth;
         }
     }
 
+    // Tests for health
     private void Update()
     {
         if (Keyboard.current.digit0Key.wasPressedThisFrame)
         {
-            IncreaseHealth();
+            IncreaseHealth(20);
         }
 
         if (Keyboard.current.digit9Key.wasPressedThisFrame)
         {
-            DecreaseHealth();
+            DecreaseHealth(10);
         }
     }
 }

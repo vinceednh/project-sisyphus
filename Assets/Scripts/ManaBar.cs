@@ -14,34 +14,35 @@ public class ManaBar : MonoBehaviour
         manaBarFillImage.fillAmount = 1f;
     }
 
-    private void IncreaseMana()
+    public void IncreaseMana(float regenAmount)
     {
         if (currentMana < maxMana)
         {
-            currentMana += 10;
+            currentMana += regenAmount;
             manaBarFillImage.fillAmount = currentMana / maxMana;  
         }
     }
 
-    private void DecreaseMana()
+    public void DecreaseMana(float depletionAmount)
     {
         if (currentMana > 0)
         {
-            currentMana -= 10;
+            currentMana -= depletionAmount;
             manaBarFillImage.fillAmount = currentMana / maxMana;
         }
     }
 
+    // Tests for mana
     private void Update()
     {
         if (Keyboard.current.digit8Key.wasPressedThisFrame)
         {
-            IncreaseMana();
+            IncreaseMana(20);
         }
 
         if (Keyboard.current.digit7Key.wasPressedThisFrame)
         {
-            DecreaseMana();
+            DecreaseMana(10);
         }
     }
 }
