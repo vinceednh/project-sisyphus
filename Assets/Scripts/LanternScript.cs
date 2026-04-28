@@ -9,15 +9,23 @@ public class NewMonoBehaviourScript : MonoBehaviour
         LanternLight = GetComponent<Light>();
     }
 
+    void OnEnable()
+    {
+        EnemyHealth.OnEnemyDeath += HandleEnemyDeath;
+    }
+
+    void OnDisable()
+    {
+        EnemyHealth.OnEnemyDeath -= HandleEnemyDeath;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("1"))
-        {
-            LanternLight.range += 1;
-        } else if (Input.GetKeyDown("2"))
-        {
-            LanternLight.range -= 1;
-        }
+        
+    }
+    void HandleEnemyDeath(GameObject enemy)
+    {
+        LanternLight.range += 1; 
     }
 }
