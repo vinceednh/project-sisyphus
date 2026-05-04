@@ -18,7 +18,7 @@ public class ManaBar : MonoBehaviour
     {
         if (currentMana < maxMana)
         {
-            currentMana += regenAmount;
+            currentMana = Mathf.Min(maxMana, currentMana + regenAmount);
             manaBarFillImage.fillAmount = currentMana / maxMana;  
         }
     }
@@ -27,9 +27,18 @@ public class ManaBar : MonoBehaviour
     {
         if (currentMana > 0)
         {
-            currentMana -= depletionAmount;
+            currentMana = Mathf.Max(0f, currentMana - depletionAmount);
             manaBarFillImage.fillAmount = currentMana / maxMana;
         }
+    }
+
+    public bool IsMissingMana(float epsilon = 0.001f) => currentMana < (maxMana - epsilon);
+
+    public bool TryIncreaseMana(float regenAmount)
+    {
+        if (!IsMissingMana()) return false;
+        IncreaseMana(regenAmount);
+        return true;
     }
 
     // Tests for mana

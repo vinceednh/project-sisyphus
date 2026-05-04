@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
-            currentHealth += healAmount;
+            currentHealth = Mathf.Min(maxHealth, currentHealth + healAmount);
             healthBarFillImage.fillAmount = currentHealth / maxHealth;
         }
     }
@@ -27,9 +27,18 @@ public class HealthBar : MonoBehaviour
     {
         if (currentHealth > 0)
         {
-            currentHealth -= damageAmount;
+            currentHealth = Mathf.Max(0f, currentHealth - damageAmount);
             healthBarFillImage.fillAmount = currentHealth / maxHealth;
         }
+    }
+
+    public bool IsMissingHealth(float epsilon = 0.001f) => currentHealth < (maxHealth - epsilon);
+
+    public bool TryIncreaseHealth(float healAmount)
+    {
+        if (!IsMissingHealth()) return false;
+        IncreaseHealth(healAmount);
+        return true;
     }
 
     // Tests for health

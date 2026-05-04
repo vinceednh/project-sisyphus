@@ -29,9 +29,10 @@ public class AbilityTwo : MonoBehaviour
 
     void CoolDown()
     {
-        coolDown.fillAmount -= rate * Time.deltaTime;
-        if (coolDown.fillAmount == 0f)
+        coolDown.fillAmount = Mathf.Max(0f, coolDown.fillAmount - rate * Time.deltaTime);
+        if (coolDown.fillAmount <= 0.0001f)
         {
+            coolDown.fillAmount = 0f;
             cooling = false;
         }
     }
@@ -40,5 +41,13 @@ public class AbilityTwo : MonoBehaviour
     {
         coolDown.fillAmount = 1f;
         cooling = true;
+    }
+
+    public bool IsOnCooldown => cooling || (coolDown != null && coolDown.fillAmount > 0.0001f);
+
+    public void RefreshCooldown()
+    {
+        if (coolDown != null) coolDown.fillAmount = 0f;
+        cooling = false;
     }
 }

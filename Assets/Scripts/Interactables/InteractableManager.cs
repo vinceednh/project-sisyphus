@@ -7,6 +7,14 @@ public class InteractableManager : MonoBehaviour
     private List<BaseInteractable> interactablesInRange = new List<BaseInteractable>();
     private BaseInteractable closestInteractable;
 
+    [Header("UI References (assign once per scene)")]
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private ManaBar manaBar;
+    [SerializeField] private AbilityOne abilityOne;
+    [SerializeField] private AbilityTwo abilityTwo;
+    [SerializeField] private AbilityThree abilityThree;
+    [SerializeField] private AbilityFour abilityFour;
+
     void Awake()
     {
         if (instance == null)
@@ -17,6 +25,18 @@ public class InteractableManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        // Optional convenience: if you forget to assign these in the inspector,
+        // we try to find them once at startup.
+        if (healthBar == null) healthBar = FindFirstObjectByType<HealthBar>();
+        if (manaBar == null) manaBar = FindFirstObjectByType<ManaBar>();
+        if (abilityOne == null) abilityOne = FindFirstObjectByType<AbilityOne>();
+        if (abilityTwo == null) abilityTwo = FindFirstObjectByType<AbilityTwo>();
+        if (abilityThree == null) abilityThree = FindFirstObjectByType<AbilityThree>();
+        if (abilityFour == null) abilityFour = FindFirstObjectByType<AbilityFour>();
     }
 
     void Update()
@@ -83,4 +103,11 @@ public class InteractableManager : MonoBehaviour
     }
 
     public static InteractableManager Instance => instance;
+
+    public HealthBar HealthBar => healthBar;
+    public ManaBar ManaBar => manaBar;
+    public AbilityOne AbilityOne => abilityOne;
+    public AbilityTwo AbilityTwo => abilityTwo;
+    public AbilityThree AbilityThree => abilityThree;
+    public AbilityFour AbilityFour => abilityFour;
 }
