@@ -5,49 +5,61 @@ using UnityEngine.InputSystem;
 public class AbilityOne : MonoBehaviour
 {
     public Image coolDown;
+    private bool cooling = false;
     public float rate;
 
-    private bool cooling = false;
+    public Ability ability;
+    public float active;
+
+    enum State { READY, ACTIVE, COOL }
+    State state = State.READY;
 
     void Start()
     {
         coolDown.fillAmount = 0f;
+        ability = new AbilityBolt();
     }
 
     void Update()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame && !cooling)
+        switch (state)
         {
-            Activate();
+            case State.READY:
+                if (Keyboard.current.digit1Key.wasPressedThisFrame && !cooling)
+                {
+                    ability.UseAbility();
+                    state = State.ACTIVE;
+                    active = ability.activeTime;
+                    // active = 2.0f;
+                    coolDown.fillAmount = 1f;
+                }
+            break;
+
+            case State.ACTIVE:
+                if (active > 0)
+                {
+                    active -= Time.deltaTime;
+                }
+                else
+                {
+                    state = State.COOL;
+                    rate = ability.cooldownRate;
+                    // rate = 0.5f;
+                    cooling = true;
+                }
+            break;
+
+            case State.COOL:
+                if (cooling)
+                {
+                    coolDown.fillAmount -= rate * Time.deltaTime;
+                    if (coolDown.fillAmount == 0f)
+                    {
+                        cooling = false;
+                        state = State.READY;
+                    }   
+                }
+            break;
         }
-
-        if (cooling)
-        {
-            CoolDown();
-        }
-    }
-
-    void CoolDown()
-    {
-        coolDown.fillAmount = Mathf.Max(0f, coolDown.fillAmount - rate * Time.deltaTime);
-        if (coolDown.fillAmount <= 0.0001f)
-        {
-            coolDown.fillAmount = 0f;
-            cooling = false;
-        }
-    }
-
-    void Activate()
-    {
-        coolDown.fillAmount = 1f;
-        cooling = true;
-    }
-
-    public bool IsOnCooldown => cooling || (coolDown != null && coolDown.fillAmount > 0.0001f);
-
-    public void RefreshCooldown()
-    {
-        if (coolDown != null) coolDown.fillAmount = 0f;
-        cooling = false;
     }
 }

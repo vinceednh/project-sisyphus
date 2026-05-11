@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - CinemachineTarget
+<<<<<<< HEAD
   - Enemy
+=======
+  - Projectile
+>>>>>>> c9ce1f3 (Sorted player scripts and began work on abilities)
   layers:
   - Default
   - TransparentFX
@@ -14,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
+  - Projectile
+  - Enemy
   - 
   - 
   - 

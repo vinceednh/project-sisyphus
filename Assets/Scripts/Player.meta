@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: f518862f875c93e4f916af228072bd2b
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+<<<<<<< HEAD:Assets/Scenes/Sandbox/NavMesh-NavMesh Surface.asset.meta
+  mainObjectFileID: 0
+=======
+>>>>>>> c9ce1f3 (Sorted player scripts and began work on abilities):Assets/Scripts/Player.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
