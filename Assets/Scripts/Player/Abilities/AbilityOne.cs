@@ -1,0 +1,65 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
+public class AbilityOne : MonoBehaviour
+{
+    public Image coolDown;
+    private bool cooling = false;
+    public float rate;
+
+    public Ability ability;
+    public float active;
+
+    enum State { READY, ACTIVE, COOL }
+    State state = State.READY;
+
+    void Start()
+    {
+        coolDown.fillAmount = 0f;
+        ability = new AbilityBolt();
+    }
+
+    void Update()
+    {
+        switch (state)
+        {
+            case State.READY:
+                if (Keyboard.current.digit1Key.wasPressedThisFrame && !cooling)
+                {
+                    ability.UseAbility();
+                    state = State.ACTIVE;
+                    active = ability.activeTime;
+                    // active = 2.0f;
+                    coolDown.fillAmount = 1f;
+                }
+            break;
+
+            case State.ACTIVE:
+                if (active > 0)
+                {
+                    active -= Time.deltaTime;
+                }
+                else
+                {
+                    state = State.COOL;
+                    rate = ability.cooldownRate;
+                    // rate = 0.5f;
+                    cooling = true;
+                }
+            break;
+
+            case State.COOL:
+                if (cooling)
+                {
+                    coolDown.fillAmount -= rate * Time.deltaTime;
+                    if (coolDown.fillAmount == 0f)
+                    {
+                        cooling = false;
+                        state = State.READY;
+                    }   
+                }
+            break;
+        }
+    }
+}
