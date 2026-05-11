@@ -46,6 +46,6 @@ public class AbilityBolt : Ability
     void InstantiateProjectile()
     {
         var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
-        projectileObj.GetComponent<Rigidbody>().linearVelocity = (destination - firePoint.position).normalized * projectileSpeed;
+        projectileObj.GetComponent<Rigidbody>().linearVelocity = (firePoint.position - destination).normalized * projectileSpeed;
     }
 }
