@@ -41,6 +41,12 @@ public class HealthBar : MonoBehaviour
         return true;
     }
 
+    public void RestoreFullHealth()
+    {
+        currentHealth = maxHealth;
+        healthBarFillImage.fillAmount = 1f;
+    }
+
     // Tests for health
     private void Update()
     {

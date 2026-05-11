@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class InteractableManager : MonoBehaviour
 {
     private static InteractableManager instance;
     private List<BaseInteractable> interactablesInRange = new List<BaseInteractable>();
     private BaseInteractable closestInteractable;
+    private int beaconsActivated = 0;
 
     [Header("UI References (assign once per scene)")]
     [SerializeField] private HealthBar healthBar;
@@ -14,6 +16,7 @@ public class InteractableManager : MonoBehaviour
     [SerializeField] private AbilityTwo abilityTwo;
     [SerializeField] private AbilityThree abilityThree;
     [SerializeField] private AbilityFour abilityFour;
+    [SerializeField] private TextMeshProUGUI beaconCounterText;
 
     void Awake()
     {
@@ -37,6 +40,9 @@ public class InteractableManager : MonoBehaviour
         if (abilityTwo == null) abilityTwo = FindAnyObjectByType<AbilityTwo>();
         if (abilityThree == null) abilityThree = FindAnyObjectByType<AbilityThree>();
         if (abilityFour == null) abilityFour = FindAnyObjectByType<AbilityFour>();
+        
+        // Update beacon counter UI
+        UpdateBeaconCounterUI();
     }
 
     void Update()
@@ -99,6 +105,23 @@ public class InteractableManager : MonoBehaviour
         if (closestInteractable == interactable)
         {
             closestInteractable = null;
+        }
+    }
+
+    public void IncrementBeaconActivated()
+    {
+        if (beaconsActivated < 5)
+        {
+            beaconsActivated++;
+            UpdateBeaconCounterUI();
+        }
+    }
+
+    private void UpdateBeaconCounterUI()
+    {
+        if (beaconCounterText != null)
+        {
+            beaconCounterText.text = $"{beaconsActivated}/5";
         }
     }
 
