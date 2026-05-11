@@ -518,6 +518,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 157752, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 648616434995480767}
+    - targetCorrespondingSourceObject: {fileID: 157752, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 251457326811718643}
   m_SourcePrefab: {fileID: 100100000, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
 --- !u!1 &8654167626094448805 stripped
 GameObject:
@@ -564,6 +567,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.5
   m_Center: {x: 0, y: 0.20059195, z: 0}
+--- !u!114 &251457326811718643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654167626094448805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2250bcee9f02c47a73ac3d641ccbdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SafeZone
+  safeZoneRadius: 5
 --- !u!4 &8654167626094704031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 429314, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
