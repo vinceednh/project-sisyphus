@@ -5,10 +5,10 @@ public class CooldownInteractable : BaseInteractable
     protected override void OnInteract()
     {
         var mgr = InteractableManager.Instance;
-        var a1 = mgr != null ? mgr.AbilityOne : FindFirstObjectByType<AbilityOne>();
-        var a2 = mgr != null ? mgr.AbilityTwo : FindFirstObjectByType<AbilityTwo>();
-        var a3 = mgr != null ? mgr.AbilityThree : FindFirstObjectByType<AbilityThree>();
-        var a4 = mgr != null ? mgr.AbilityFour : FindFirstObjectByType<AbilityFour>();
+        var a1 = mgr != null ? mgr.AbilityOne : FindAnyObjectByType<AbilityOne>();
+        var a2 = mgr != null ? mgr.AbilityTwo : FindAnyObjectByType<AbilityTwo>();
+        var a3 = mgr != null ? mgr.AbilityThree : FindAnyObjectByType<AbilityThree>();
+        var a4 = mgr != null ? mgr.AbilityFour : FindAnyObjectByType<AbilityFour>();
 
         bool anyOnCooldown =
             (a1 != null && a1.IsOnCooldown) ||
