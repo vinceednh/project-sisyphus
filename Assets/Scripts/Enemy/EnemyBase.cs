@@ -53,14 +53,17 @@ public class EnemyBase : MonoBehaviour
     {
         Vector3 start = transform.position + Vector3.up;
         Vector3 direction = player.position - transform.position;
-        if (Physics.Raycast(start, direction, out RaycastHit hit))
+        int mask = ~LayerMask.GetMask("Enemy");
+
+        if (Physics.Raycast(start, direction, out RaycastHit hit, Mathf.Infinity, mask))
         {
             return hit.transform.root.CompareTag("Player");
         }
+        
         return false;
     }
 
-    void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, detectionRange);

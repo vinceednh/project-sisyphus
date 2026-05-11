@@ -8,7 +8,7 @@ public class ManaInteractable : BaseInteractable
     {
         var mb = InteractableManager.Instance != null
             ? InteractableManager.Instance.ManaBar
-            : FindFirstObjectByType<ManaBar>();
+            : FindAnyObjectByType<ManaBar>();
 
         if (mb != null) mb.TryIncreaseMana(regenAmount);
 
