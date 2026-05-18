@@ -12,7 +12,7 @@ public class AbilityBolt : Ability
     }
 
     // Bolt Variables
-    public GameObject projectile = Resources.Load<GameObject>("VFX/vfx_magicBolt");
+    public GameObject projectile = Resources.Load<GameObject>("vfx_magicBolt");
     public float projectileSpeed = 30f;
 
     private Vector3 destination;
