@@ -7,10 +7,14 @@ public class InsectEnemy : EnemyBase
     public InsectEnemyStats stats;
     private Animator anim;
     private EnemyHealth health;
-    private enum State { Idle, Flying, Landing, Walking, Attacking, Dead }
+    private enum State { Idle, Patrol, Flying, Landing, Walking, Attacking, Dead }
     private State state = State.Idle;
     private float attackTimer = 0f;
     private float landTimer = 0f;
+    private Vector3 spawnPoint;
+    private float patrolWaitTimer = 0f;
+    private const float PatrolWaitTime = 2f;
+    private const float PatrolRadius = 8f;
     private const float LandDuration = 0.6f;
 
     private static readonly int HashFlying = Animator.StringToHash("isFlying");
@@ -33,7 +37,7 @@ public class InsectEnemy : EnemyBase
 
         base.Start();
 
-        playerSpotted = true;
+        spawnPoint = transform.position;
 
         agent.stoppingDistance  = stats != null ? stats.attackRadius : 1.5f;
         anim = GetComponent<Animator>();
@@ -45,6 +49,8 @@ public class InsectEnemy : EnemyBase
         }
 
         agent.updateUpAxis = false;
+
+        EnterPatrol();
     }
 
     // Update is called once per frame
@@ -79,6 +85,9 @@ public class InsectEnemy : EnemyBase
             case State.Idle: HandleIdle();
                 break;
 
+            case State.Patrol: HandlePatrol();
+                break;
+
             case State.Flying: HandleFlying(dist);
                 break;
 
@@ -100,13 +109,40 @@ public class InsectEnemy : EnemyBase
         {
             EnterFly();
         }
+        else
+        {
+            EnterPatrol();
+        }
+    }
+
+    private void HandlePatrol()
+    {
+        if (playerSpotted)
+        {
+            EnterFly();
+            return;
+        }
+
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            patrolWaitTimer += Time.deltaTime;
+            anim.SetBool(HashWalking, false);
+            if (patrolWaitTimer >= PatrolWaitTime)
+            {
+                patrolWaitTimer = 0f;
+                EnterPatrol();
+            }
+        } else
+        {
+            anim.SetBool(HashWalking, true);
+        }
     }
 
     private void HandleFlying(float dist)
     {
         if (!playerSpotted)
         {
-            EnterIdle();
+            EnterPatrol();
             return;
         }
 
@@ -146,7 +182,7 @@ public class InsectEnemy : EnemyBase
     {
         if (!playerSpotted)
         {
-            EnterIdle();
+            EnterPatrol();
             return;
          }
 
@@ -288,5 +324,26 @@ public class InsectEnemy : EnemyBase
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(transform.position, stats.attackRadius);
         }
+    }
+
+    private void EnterPatrol()
+    {
+        state = State.Patrol;
+        patrolWaitTimer = 0f;
+
+        Vector2 random = Random.insideUnitCircle * PatrolRadius;
+        Vector3 candidate = spawnPoint + new Vector3(random.x, 0, random.y);
+
+        if (NavMesh.SamplePosition(candidate, out NavMeshHit hit, PatrolRadius, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        } else
+        {
+            agent.SetDestination(spawnPoint);
+        }
+
+        anim.SetBool(HashFlying, false);
+        anim.SetBool(HashWalking, true);
+        anim.SetBool(HashAttacking, false);
     }
 }
