@@ -32,6 +32,9 @@ public class HealthBar : MonoBehaviour
         }
     }
 
+    public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
+
     public bool IsMissingHealth(float epsilon = 0.001f) => currentHealth < (maxHealth - epsilon);
 
     public bool TryIncreaseHealth(float healAmount)

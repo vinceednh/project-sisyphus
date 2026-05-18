@@ -2,30 +2,21 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    [SerializeField] private HealthBar healthBar;
     private Light LanternLight;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         LanternLight = GetComponent<Light>();
+        if (healthBar == null)
+            healthBar = FindFirstObjectByType<HealthBar>();
     }
 
-    void OnEnable()
+      void Update()
     {
-        EnemyHealth.OnEnemyDeath += HandleEnemyDeath;
-    }
+        if (LanternLight == null || healthBar == null) return;
 
-    void OnDisable()
-    {
-        EnemyHealth.OnEnemyDeath -= HandleEnemyDeath;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    void HandleEnemyDeath(GameObject enemy)
-    {
-        LanternLight.range += 1; 
+        float healthRatio = healthBar.CurrentHealth / healthBar.MaxHealth;
+        LanternLight.range = healthRatio * 15f;
     }
 }

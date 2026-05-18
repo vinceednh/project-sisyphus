@@ -2,30 +2,72 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-
     public int damage = 10;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 20f;
+    public float projectileLifetime = 3f;
+    public float spawnForwardOffset = 1f;
+
+    [SerializeField] Transform spawnPoint;
+
+    void Awake()
     {
-        
+        if (spawnPoint == null)
+            spawnPoint = transform.Find("PlayerCameraRoot");
+
+        if (spawnPoint == null)
+        {
+            Animator animator = GetComponentInChildren<Animator>();
+            if (animator != null)
+                spawnPoint = animator.transform;
+        }
+
+        if (spawnPoint == null)
+            spawnPoint = transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)){
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0));
-            RaycastHit hit;
-            int layerMask = ~LayerMask.GetMask("Player");
-            if(Physics.Raycast(ray, out hit, 100f, layerMask)){
-                Debug.Log("hit " + hit.collider.gameObject.name);
-                EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
-                if(enemyHealth != null){
-                    enemyHealth.TakeDamage(damage);
-                }
-            }
-        }
+        if (Input.GetMouseButtonDown(0))
+            FireProjectile();
     }
 
+    void FireProjectile()
+    {
+        Vector3 aimDirection = GetAimDirection();
+        Vector3 spawnPosition = spawnPoint.position + aimDirection * spawnForwardOffset;
 
+        GameObject projectileObject = projectilePrefab != null
+            ? Instantiate(projectilePrefab, spawnPosition, Quaternion.LookRotation(aimDirection))
+            : CreateDefaultProjectile(spawnPosition, aimDirection);
+
+        PlayerProjectile projectile = projectileObject.GetComponent<PlayerProjectile>();
+        if (projectile == null)
+            projectile = projectileObject.AddComponent<PlayerProjectile>();
+
+        projectile.Launch(aimDirection, damage, projectileSpeed, projectileLifetime);
+    }
+
+    Vector3 GetAimDirection()
+    {
+        Vector3 forward = Camera.main != null
+            ? Camera.main.transform.forward
+            : transform.forward;
+
+        forward.y = 0f;
+        if (forward.sqrMagnitude < 0.001f)
+            forward = transform.forward;
+
+        return forward.normalized;
+    }
+
+    GameObject CreateDefaultProjectile(Vector3 position, Vector3 direction)
+    {
+        GameObject projectileObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        projectileObject.name = "PlayerProjectile";
+        projectileObject.transform.position = position;
+        projectileObject.transform.rotation = Quaternion.LookRotation(direction);
+        projectileObject.transform.localScale = Vector3.one * 0.25f;
+        return projectileObject;
+    }
 }
