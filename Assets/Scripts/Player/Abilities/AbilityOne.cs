@@ -30,7 +30,6 @@ public class AbilityOne : MonoBehaviour
                     ability.UseAbility();
                     state = State.ACTIVE;
                     active = ability.activeTime;
-                    // active = 2.0f;
                     coolDown.fillAmount = 1f;
                 }
             break;
@@ -44,7 +43,6 @@ public class AbilityOne : MonoBehaviour
                 {
                     state = State.COOL;
                     rate = ability.cooldownRate;
-                    // rate = 0.5f;
                     cooling = true;
                 }
             break;
@@ -57,7 +55,7 @@ public class AbilityOne : MonoBehaviour
                     {
                         cooling = false;
                         state = State.READY;
-                    }   
+                    }
                 }
             break;
         }
