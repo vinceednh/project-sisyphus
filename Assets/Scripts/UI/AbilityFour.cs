@@ -26,10 +26,9 @@ public class AbilityFour : MonoBehaviour
             case State.READY:
                 if (Keyboard.current.digit4Key.wasPressedThisFrame && !cooling)
                 {
-                    // ability.UseAbility();
+                    ability.UseAbility();
                     state = State.ACTIVE;
-                    // active = ability.activeTime;
-                    active = 2.0f;
+                    active = ability.activeTime;
                     coolDown.fillAmount = 1f;
                 }
             break;
@@ -42,8 +41,7 @@ public class AbilityFour : MonoBehaviour
                 else
                 {
                     state = State.COOL;
-                    // rate = ability.cooldownRate;
-                    rate = 0.5f;
+                    rate = ability.cooldownRate;
                     cooling = true;
                 }
             break;

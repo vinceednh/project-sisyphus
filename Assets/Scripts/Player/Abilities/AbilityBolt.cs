@@ -12,20 +12,10 @@ public class AbilityBolt : Ability
     }
 
     // Bolt Variables
-    public Camera cam;
-    public GameObject projectile;
-    public Transform firePoint;
+    public GameObject projectile = Resources.Load<GameObject>("VFX/vfx_magicBolt");
     public float projectileSpeed = 30f;
 
     private Vector3 destination;
-
-    void Update()
-    {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            UseAbility();
-        }
-    }
 
     public override void UseAbility()
     {
@@ -43,7 +33,7 @@ public class AbilityBolt : Ability
         }
     }
 
-    void InstantiateProjectile()
+    public void InstantiateProjectile()
     {
         var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
         projectileObj.GetComponent<Rigidbody>().linearVelocity = (firePoint.position - destination).normalized * projectileSpeed;

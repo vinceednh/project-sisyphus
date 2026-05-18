@@ -1572,25 +1572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   damage: 10
---- !u!114 &751759628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751759620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a9cf83660e8b54b8068fab883e2f9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AbilityBolt
-  cooldownRate: 0.5
-  activeTime: 1
-  abilityName: Magic Bolt
-  cam: {fileID: 1504489786}
-  projectile: {fileID: 4262497225884448506, guid: 0b01a7fb8e14cac41920a6c9475853a3, type: 3}
-  firePoint: {fileID: 1014709055}
-  projectileSpeed: 30
 --- !u!1 &801138700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityOne
   coolDown: {fileID: 1797801868}
-  rate: 0.5
+  rate: 0
   ability: {fileID: 0}
   active: 0
 --- !u!1001 &1003763532
@@ -2513,7 +2494,7 @@ Transform:
   m_GameObject: {fileID: 1014709054}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.183, z: 0.444}
+  m_LocalPosition: {x: 0, y: 1.399, z: 0.31}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3326,11 +3307,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480571229}
   m_CullTransparentMesh: 1
---- !u!20 &1504489786 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
-  m_PrefabInstance: {fileID: 651739637}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1561645790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4715,9 +4691,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       insertIndex: -1
       addedObject: {fileID: 751759621}
-    - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751759628}
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
 --- !u!1 &1969514221
 GameObject:
