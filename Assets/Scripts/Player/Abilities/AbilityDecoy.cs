@@ -12,7 +12,7 @@ public class AbilityDecoy : Ability
     }
 
     // Decoy Variables
-    public GameObject decoy = Resources.Load<GameObject>("VFX/vfx_decoy");
+    public GameObject decoy = Resources.Load<GameObject>("vfx_decoy");
 
     private Vector3 destination;
 

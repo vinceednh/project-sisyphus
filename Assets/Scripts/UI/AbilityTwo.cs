@@ -50,7 +50,7 @@ public class AbilityTwo : MonoBehaviour
             case State.COOL:
                 if (cooling)
                 {
-                    coolDown.fillAmount -= rate * Time.deltaTime;
+                    coolDown.fillAmount = Mathf.Max(0f, coolDown.fillAmount - rate * Time.deltaTime);
                     if (coolDown.fillAmount == 0f)
                     {
                         cooling = false;
@@ -59,5 +59,13 @@ public class AbilityTwo : MonoBehaviour
                 }
             break;
         }
+    }
+
+    public bool IsOnCooldown => cooling || (coolDown != null && coolDown.fillAmount > 0.0001f);
+
+    public void RefreshCooldown()
+    {
+        if (coolDown != null) coolDown.fillAmount = 0f;
+        cooling = false;
     }
 }
