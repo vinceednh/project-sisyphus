@@ -240,7 +240,6 @@ public class InsectEnemy : EnemyBase
         anim.SetBool(HashAttacking, false);
         yield return null;
         anim.SetBool(HashAttacking, true);
-        DoAttack();
     }
     
     private void EnterIdle()
@@ -307,6 +306,12 @@ public class InsectEnemy : EnemyBase
                 break;
             }
         }
+    }
+
+    public void OnAttackHit()
+    {
+        if (state != State.Attacking) return;
+        DoAttack();
     }
 
     private void SetAnimIdle()
