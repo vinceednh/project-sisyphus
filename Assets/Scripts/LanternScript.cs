@@ -2,22 +2,21 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    [SerializeField] private HealthBar healthBar;
     private Light LanternLight;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         LanternLight = GetComponent<Light>();
+        if (healthBar == null)
+            healthBar = FindFirstObjectByType<HealthBar>();
     }
 
-    // Update is called once per frame
-    void Update()
+      void Update()
     {
-        if (Input.GetKeyDown("1"))
-        {
-            LanternLight.range += 1;
-        } else if (Input.GetKeyDown("2"))
-        {
-            LanternLight.range -= 1;
-        }
+        if (LanternLight == null || healthBar == null) return;
+
+        float healthRatio = healthBar.CurrentHealth / healthBar.MaxHealth;
+        LanternLight.range = healthRatio * 15f;
     }
 }
