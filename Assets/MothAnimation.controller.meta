@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/MothAnimation.controller.meta
 guid: 182bfee015aa69e318602daafee22d8c
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
-========
-guid: 2ac08941922374e59a9a4efb340fca12
-DefaultImporter:
-  externalObjects: {}
->>>>>>>> Stashed changes:Assets/Scenes/athena-model.unity.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
