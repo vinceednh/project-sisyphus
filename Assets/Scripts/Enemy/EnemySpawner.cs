@@ -4,17 +4,26 @@ using UnityEngine.AI;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    public GameObject[] enemyPrefabs;   // drag your 3 insect prefabs in here
-    public int enemyCount = 5;          // how many enemies to spawn
-    public float spawnRadius = 20f;     // how far from this object they can spawn
-    public int maxAttempts = 10;        // how many times to try finding a valid navmesh point
+    public GameObject[] enemyPrefabs;
+    public float spawnRadius = 20f;
+    public int maxEnemies = 5;
+    public float spawnInterval = 10f;
+    public int maxAttempts = 10;
 
-    void Start()
+    private float spawnTimer = 0f;
+    private int currentEnemies = 0;
+
+    void Update()
     {
-        Spawn();
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer >= spawnInterval)
+        {
+            spawnTimer = 0f;
+            TrySpawn();
+        }
     }
 
-    private void Spawn()
+    private void TrySpawn()
     {
         if (enemyPrefabs == null || enemyPrefabs.Length == 0)
         {
@@ -22,26 +31,36 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        int spawned = 0;
-        int attempts = 0;
+        if (currentEnemies >= maxEnemies) return;
 
-        while (spawned < enemyCount && attempts < enemyCount * maxAttempts)
+        for (int i = 0; i < maxAttempts; i++)
         {
-            attempts++;
-
             Vector2 random = Random.insideUnitCircle * spawnRadius;
             Vector3 candidate = transform.position + new Vector3(random.x, 0, random.y);
 
             if (NavMesh.SamplePosition(candidate, out NavMeshHit hit, 5f, NavMesh.AllAreas))
             {
                 GameObject prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-                Instantiate(prefab, hit.position, Quaternion.Euler(0, Random.Range(0f, 360f), 0));
-                spawned++;
+                GameObject enemy = Instantiate(prefab, hit.position, Quaternion.Euler(0, Random.Range(0f, 360f), 0));
+
+                EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+                if (health != null)
+                {
+                    currentEnemies++;
+                    EnemyHealth.OnEnemyDeath += OnEnemyDied;
+                }
+                return;
             }
         }
 
-        if (spawned < enemyCount)
-            Debug.LogWarning($"EnemySpawner: Only spawned {spawned}/{enemyCount} enemies — not enough valid NavMesh area.");
+        Debug.LogWarning("EnemySpawner: Could not find a valid NavMesh position.");
+    }
+
+    private void OnEnemyDied(GameObject enemy)
+    {
+        currentEnemies--;
+        currentEnemies = Mathf.Max(0, currentEnemies);
+        EnemyHealth.OnEnemyDeath -= OnEnemyDied;
     }
 
     void OnDrawGizmos()
