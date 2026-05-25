@@ -1839,6 +1839,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1590423561}
+    - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1590423568}
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
 --- !u!1001 &63497595
 PrefabInstance:
@@ -55468,6 +55471,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
+--- !u!95 &1590423567 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6982812146204527121, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 62514098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1590423568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949702347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e311c747c3c2284cba2d5ea5019baa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimatorBridge
+  source: {fileID: 1590423567}
+  target: {fileID: 1749129477}
 --- !u!1 &1590685508
 GameObject:
   m_ObjectHideFlags: 0
@@ -60614,6 +60636,11 @@ Transform:
 --- !u!4 &1749129476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2449832557352399661, guid: b70ba771ac385a24f8b931c3153fe24f, type: 3}
+  m_PrefabInstance: {fileID: 7534954295916381848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1749129477 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8586323185653573657, guid: b70ba771ac385a24f8b931c3153fe24f, type: 3}
   m_PrefabInstance: {fileID: 7534954295916381848}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1750018341
@@ -74663,6 +74690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: moth
       objectReference: {fileID: 0}
+    - target: {fileID: 8586323185653573657, guid: b70ba771ac385a24f8b931c3153fe24f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1df60659aa59e8942b6f423801b205e0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
