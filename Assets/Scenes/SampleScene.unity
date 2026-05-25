@@ -1572,6 +1572,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   damage: 10
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileLifetime: 3
+  spawnForwardOffset: 1
+  spawnPoint: {fileID: 0}
 --- !u!1 &801138700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2356,7 @@ MonoBehaviour:
   rate: 0
   ability: {fileID: 0}
   active: 0
+  mana: {fileID: 0}
 --- !u!1001 &1003763532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2809,6 +2815,7 @@ MonoBehaviour:
   rate: 0.5
   ability: {fileID: 0}
   active: 0
+  mana: {fileID: 0}
 --- !u!1 &1340552106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,6 +3768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0105c3ea3157a9e4189c2099b603a9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  healthBar: {fileID: 0}
 --- !u!114 &1825944201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3909,6 +3917,7 @@ MonoBehaviour:
   rate: 0.5
   ability: {fileID: 0}
   active: 0
+  mana: {fileID: 0}
 --- !u!1 &1896201142
 GameObject:
   m_ObjectHideFlags: 0
@@ -4861,6 +4870,7 @@ MonoBehaviour:
   rate: 0.5
   ability: {fileID: 0}
   active: 0
+  mana: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

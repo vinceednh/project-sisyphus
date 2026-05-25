@@ -1,19 +1,18 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class AbilityDecoy : Ability
+public class AbilityShield : Ability
 {
     // Class Variables
-    public AbilityDecoy()
+    public AbilityShield()
     {
         cooldownRate = 0.1f;
-        activeTime = 5f;
-        abilityName = "Decoy";
-        manaCost = 30f;
+        activeTime = 10f;
+        abilityName = "Shield";
+        manaCost = 60f;
     }
 
-    // Decoy Variables
-    public GameObject decoy = Resources.Load<GameObject>("vfx_decoy");
+    // Shield Variables
+    public GameObject shield = Resources.Load<GameObject>("vfx_shield");
 
     private Vector3 destination;
 
@@ -32,11 +31,11 @@ public class AbilityDecoy : Ability
                 destination = ray.GetPoint(75);
         }
 
-        InstantiateDecoy();
+        InstantiateShield();
     }
 
-    public void InstantiateDecoy()
+    public void InstantiateShield()
     {
-        var projectileObj = Instantiate(decoy, firePoint.position - adjustY, Quaternion.identity) as GameObject;
+        var projectileObj = Instantiate(shield, firePoint.position - adjustY, Quaternion.identity) as GameObject;
     }
 }

@@ -7,6 +7,7 @@ public abstract class Ability : ScriptableObject
     public string abilityName;
     public Camera cam;
     public Transform firePoint;
+    public float manaCost;
     protected virtual void Awake()
     {
         cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();

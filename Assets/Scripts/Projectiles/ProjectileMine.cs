@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileBolt : MonoBehaviour
+public class ProjectileMine : MonoBehaviour
 {
     public GameObject impactVFX;
 

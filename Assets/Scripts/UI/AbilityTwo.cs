@@ -11,12 +11,16 @@ public class AbilityTwo : MonoBehaviour
     public Ability ability;
     public float active;
 
+    public ManaBar mana;
+
     enum State { READY, ACTIVE, COOL }
     State state = State.READY;
 
     void Start()
     {
         coolDown.fillAmount = 0f;
+        mana = FindAnyObjectByType<ManaBar>();
+        
         ability = new AbilityDecoy();
     }
 
@@ -27,10 +31,14 @@ public class AbilityTwo : MonoBehaviour
             case State.READY:
                 if (Keyboard.current.digit2Key.wasPressedThisFrame && !cooling)
                 {
-                    ability.UseAbility();
-                    state = State.ACTIVE;
-                    active = ability.activeTime;
-                    coolDown.fillAmount = 1f;
+                    if (mana.GetMana() >= ability.manaCost)
+                    {
+                        ability.UseAbility();
+                        mana.DecreaseMana(ability.manaCost);
+                        state = State.ACTIVE;
+                        active = ability.activeTime;
+                        coolDown.fillAmount = 1f;
+                    }
                 }
             break;
 

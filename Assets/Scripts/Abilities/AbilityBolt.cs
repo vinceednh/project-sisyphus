@@ -9,9 +9,11 @@ public class AbilityBolt : Ability
         cooldownRate = 0.5f;
         activeTime = 1.0f;
         abilityName = "Magic Bolt";
+        manaCost = 10f;
     }
 
     // Bolt Variables
+    public float damage = 20;
     public GameObject projectile = Resources.Load<GameObject>("vfx_magicBolt");
     public float projectileSpeed = 30f;
 

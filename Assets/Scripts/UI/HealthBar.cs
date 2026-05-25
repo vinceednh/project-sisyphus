@@ -50,6 +50,12 @@ public class HealthBar : MonoBehaviour
         healthBarFillImage.fillAmount = 1f;
     }
 
+    
+    public float GetHealth()
+    {
+        return currentHealth;
+    }
+
     // Tests for health
     private void Update()
     {

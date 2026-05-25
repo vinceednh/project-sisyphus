@@ -1,23 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AbilityDecoy : Ability
+public class AbilityMine : Ability
 {
     // Class Variables
-    public AbilityDecoy()
+    public AbilityMine()
     {
-        cooldownRate = 0.1f;
+        cooldownRate = 0.5f;
         activeTime = 5f;
-        abilityName = "Decoy";
-        manaCost = 30f;
+        abilityName = "Mine";
+        manaCost = 20f;
     }
 
-    // Decoy Variables
-    public GameObject decoy = Resources.Load<GameObject>("vfx_decoy");
+    // Mine Variables
+    public float damage = 50;
+    public GameObject mine = Resources.Load<GameObject>("vfx_mine");
 
     private Vector3 destination;
-
-    private Vector3 adjustY = new Vector3(0, 1.2f, 0);
 
     public override void UseAbility()
     {
@@ -32,11 +31,11 @@ public class AbilityDecoy : Ability
                 destination = ray.GetPoint(75);
         }
 
-        InstantiateDecoy();
+        InstantiateMine();
     }
 
-    public void InstantiateDecoy()
+    public void InstantiateMine()
     {
-        var projectileObj = Instantiate(decoy, firePoint.position - adjustY, Quaternion.identity) as GameObject;
+       var projectileObj = Instantiate(mine, firePoint.position, Quaternion.identity) as GameObject;
     }
 }
