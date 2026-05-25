@@ -133,4 +133,5 @@ public class InteractableManager : MonoBehaviour
     public AbilityTwo AbilityTwo => abilityTwo;
     public AbilityThree AbilityThree => abilityThree;
     public AbilityFour AbilityFour => abilityFour;
+    public int BeaconsActivated => beaconsActivated;
 }
