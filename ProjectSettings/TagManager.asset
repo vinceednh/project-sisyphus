@@ -3,13 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
   - CinemachineTarget
   - Projectile
->>>>>>> cff0a01f7c792f58892666baa2df2ee7860ceb53
   layers:
   - Default
   - TransparentFX
@@ -17,15 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
-  - 
-  - 
-  - 
-=======
   - Player
   - Projectile
   - Enemy
->>>>>>> cff0a01f7c792f58892666baa2df2ee7860ceb53
   - 
   - 
   - 
