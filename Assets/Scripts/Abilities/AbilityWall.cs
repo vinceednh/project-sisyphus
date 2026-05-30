@@ -1,19 +1,18 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class AbilityMine : Ability
+public class AbilityWall : Ability
 {
     // Class Variables
-    public AbilityMine()
+    public AbilityWall()
     {
         cooldownRate = 0.5f;
         activeTime = 5f;
-        abilityName = "Mine";
-        manaCost = 20f;
+        abilityName = "Wall";
+        manaCost = 15f;
     }
 
-    // Mine Variables
-    public GameObject mine = Resources.Load<GameObject>("vfx_mine");
+    // Wall Variables
+    public GameObject wall = Resources.Load<GameObject>("vfx_wall");
 
     private Vector3 destination;
 
@@ -30,11 +29,11 @@ public class AbilityMine : Ability
                 destination = ray.GetPoint(75);
         }
 
-        InstantiateMine();
+        InstantiateWall();
     }
 
-    public void InstantiateMine()
+    public void InstantiateWall()
     {
-       var projectileObj = Instantiate(mine, firePoint.position, Quaternion.identity) as GameObject;
+        var projectileObj = Instantiate(wall, firePoint.position, Quaternion.identity) as GameObject;
     }
 }

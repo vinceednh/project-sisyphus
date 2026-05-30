@@ -22,6 +22,7 @@ public class AbilityThree : MonoBehaviour
         mana = FindAnyObjectByType<ManaBar>();
 
         ability = new AbilityShield();
+        // ability = new AbilityWall();
     }
 
     void Update()

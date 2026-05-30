@@ -1,19 +1,18 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class AbilityMine : Ability
+public class AbilityCloud : Ability
 {
     // Class Variables
-    public AbilityMine()
+    public AbilityCloud()
     {
-        cooldownRate = 0.5f;
-        activeTime = 5f;
-        abilityName = "Mine";
-        manaCost = 20f;
+        cooldownRate = 0.3f;
+        activeTime = 10f;
+        abilityName = "Poison Cloud";
+        manaCost = 50f;
     }
 
-    // Mine Variables
-    public GameObject mine = Resources.Load<GameObject>("vfx_mine");
+    // Cloud Variables
+    public GameObject cloud = Resources.Load<GameObject>("vfx_poisonCloud");
 
     private Vector3 destination;
 
@@ -30,11 +29,11 @@ public class AbilityMine : Ability
                 destination = ray.GetPoint(75);
         }
 
-        InstantiateMine();
+        InstantiateCloud();
     }
 
-    public void InstantiateMine()
+    public void InstantiateCloud()
     {
-       var projectileObj = Instantiate(mine, firePoint.position, Quaternion.identity) as GameObject;
+       var projectileObj = Instantiate(cloud, firePoint.position, Quaternion.identity) as GameObject;
     }
 }

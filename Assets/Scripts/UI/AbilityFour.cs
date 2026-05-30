@@ -22,6 +22,7 @@ public class AbilityFour : MonoBehaviour
         mana = FindAnyObjectByType<ManaBar>();
 
         ability = new AbilityMine();
+        // ability = new AbilityCloud();
     }
 
     void Update()

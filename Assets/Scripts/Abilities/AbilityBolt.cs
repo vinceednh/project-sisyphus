@@ -13,7 +13,6 @@ public class AbilityBolt : Ability
     }
 
     // Bolt Variables
-    public float damage = 20;
     public GameObject projectile = Resources.Load<GameObject>("vfx_magicBolt");
     public float projectileSpeed = 30f;
 
