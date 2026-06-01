@@ -26,7 +26,7 @@ public class InsectEnemy : EnemyBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
-        
+
         if (stats != null)
         {
             speed = stats.moveSpeed;
