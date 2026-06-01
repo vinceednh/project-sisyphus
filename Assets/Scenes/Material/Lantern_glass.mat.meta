@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Material/Lantern_glass.mat.meta
 guid: f532c4122121b40f8bd5ffaf96b9bb85
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
+========
+guid: 099cc57f0b56dad4a9748a75e14047bb
+PrefabImporter:
+  externalObjects: {}
+>>>>>>>> cff0a01f7c792f58892666baa2df2ee7860ceb53:Assets/Resources/vfx_decoy.prefab.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
