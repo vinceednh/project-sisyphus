@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: -5229552356844847049}
   - component: {fileID: 3288632160533324881}
   - component: {fileID: -6288220486291873010}
-  - component: {fileID: 1732472014285263519}
+  - component: {fileID: 6713172048471562975}
   m_Layer: 0
   m_Name: INSECT_02
   m_TagString: Enemy
@@ -652,8 +652,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &1732472014285263519
-BoxCollider:
+--- !u!136 &6713172048471562975
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -670,8 +670,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1441195440413365727
 GameObject:
