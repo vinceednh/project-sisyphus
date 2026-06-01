@@ -26,7 +26,7 @@ public class InsectEnemy : EnemyBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
-        
+
         if (stats != null)
         {
             speed = stats.moveSpeed;
@@ -46,6 +46,7 @@ public class InsectEnemy : EnemyBase
         if (health != null && stats != null)
         {
             health.maxHealth = stats.maxHealth;
+            health.health = stats.maxHealth;
         }
 
         agent.updateUpAxis = false;
@@ -254,6 +255,7 @@ public class InsectEnemy : EnemyBase
     {
         state = State.Flying;
         anim.SetBool(HashFlying, true);
+        AudioManager.Instance.Play(AudioManager.SoundType.EnemyFly);
         anim.SetBool(HashAttacking, false);
     }
 
@@ -312,6 +314,8 @@ public class InsectEnemy : EnemyBase
     {
         if (state != State.Attacking) return;
         DoAttack();
+        AudioManager.Instance.Play(AudioManager.SoundType.EnemyAttack);
+
     }
 
     private void SetAnimIdle()
