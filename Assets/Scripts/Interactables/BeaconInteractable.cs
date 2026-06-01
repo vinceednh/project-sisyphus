@@ -22,6 +22,7 @@ public class BeaconInteractable : BaseInteractable
         // Change light color to green
         if (beaconLight != null)
         {
+            AudioManager.Instance.Play(AudioManager.SoundType.Light);
             beaconLight.color = Color.green;
         }
 

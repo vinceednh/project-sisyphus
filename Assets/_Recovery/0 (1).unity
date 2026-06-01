@@ -1817,7 +1817,7 @@ PrefabInstance:
     - target: {fileID: 6982812146204527121, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1df60659aa59e8942b6f423801b205e0, type: 2}
+      objectReference: {fileID: 9100000, guid: 182bfee015aa69e318602daafee22d8c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3837663348675104489, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -1826,6 +1826,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1749129476}
+    - targetCorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1750018342}
     - targetCorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       insertIndex: -1
       addedObject: {fileID: 964781514}
@@ -45434,7 +45437,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 46a0c0ce0d04fa124abeec074af7be13, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: fcaca3c81d6ba26489d68704d5e4b867, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1339878652
 Transform:
@@ -61218,6 +61221,120 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8586323185653573657, guid: b70ba771ac385a24f8b931c3153fe24f, type: 3}
   m_PrefabInstance: {fileID: 7534954295916381848}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1750018341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750018342}
+  - component: {fileID: 1750018345}
+  - component: {fileID: 1750018344}
+  - component: {fileID: 1750018343}
+  m_Layer: 8
+  m_Name: Capsule
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1750018342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750018341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.076, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1590423560}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1750018343
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750018341}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1750018344
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750018341}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1750018345
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750018341}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1752380474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74035,35 +74152,11 @@ MonoBehaviour:
   AllSounds:
   - Type: 0
     Clip: {fileID: 8300000, guid: a6d270ed5825acb408f19b5495638e17, type: 3}
-    Volume: 0.25
-    Source: {fileID: 0}
-  - Type: 1
-    Clip: {fileID: 8300000, guid: 4cd178647c07dbe6f9987f21d0f5c282, type: 3}
     Volume: 0.5
     Source: {fileID: 0}
-  - Type: 3
-    Clip: {fileID: 8300000, guid: 1a91fcd19acf1e54bba0945d9f390849, type: 3}
-    Volume: 0.5
-    Source: {fileID: 0}
-  - Type: 4
-    Clip: {fileID: 8300000, guid: b70c40dfcbbda0482a8e359856f9ed9e, type: 3}
-    Volume: 0.5
-    Source: {fileID: 0}
-  - Type: 5
-    Clip: {fileID: 8300000, guid: de9c316e3b2fe4e3e9e33808e0493a42, type: 3}
-    Volume: 0.5
-    Source: {fileID: 0}
-  - Type: 6
-    Clip: {fileID: 8300000, guid: 5672989348f900b28beaffbf9fb7ae5f, type: 3}
-    Volume: 0.5
-    Source: {fileID: 0}
-  - Type: 7
-    Clip: {fileID: 8300000, guid: ec726f5ff7206fdcf9bc513a0f247fbe, type: 3}
-    Volume: 0.5
-    Source: {fileID: 0}
-  - Type: 2
-    Clip: {fileID: 8300000, guid: 29841e7d5bbfb5b419c9ad16ca8bc4c1, type: 3}
-    Volume: 0.5
+  - Type: 0
+    Clip: {fileID: 8300000, guid: dd1af302b8902684d9381de1f2d3a5af, type: 3}
+    Volume: 0
     Source: {fileID: 0}
 --- !u!4 &2110779161
 Transform:
