@@ -54,7 +54,6 @@ public class PlayerAttack : MonoBehaviour
             ? Camera.main.transform.forward
             : transform.forward;
 
-        forward.y = 0f;
         if (forward.sqrMagnitude < 0.001f)
             forward = transform.forward;
 

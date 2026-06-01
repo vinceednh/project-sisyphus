@@ -57,6 +57,7 @@ public class EnemyBase : MonoBehaviour
 
         if (Physics.Raycast(start, direction, out RaycastHit hit, Mathf.Infinity, mask))
         {
+            Debug.Log($"Raycast hit: {hit.transform.name}");
             return hit.transform.root.CompareTag("Player");
         }
         
