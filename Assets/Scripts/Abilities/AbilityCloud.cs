@@ -29,7 +29,6 @@ public class AbilityCloud : Ability
                 destination = ray.GetPoint(75);
         }
         
-        AudioManager.Instance.Play(AudioManager.SoundType.Cloud);
         InstantiateCloud();
     }
 

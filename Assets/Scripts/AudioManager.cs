@@ -7,11 +7,13 @@ public class AudioManager : MonoBehaviour
     {
         Ambient,
         Bolt,
-        Cloud,
         Decoy,
-        Mine,
+        PlaceMine,
+        Detonate,
         Shield,
-        Wall
+        Light,
+        EnemyFly,
+        EnemyAttack,
     }
 
     [System.Serializable]

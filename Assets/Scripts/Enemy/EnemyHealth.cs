@@ -19,7 +19,6 @@ public class EnemyHealth : MonoBehaviour
         if(health <= 0)
         {
             OnEnemyDeath?.Invoke(gameObject);  // Broadcast to all listeners
-            Destroy(gameObject);
         }
     }
 }

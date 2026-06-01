@@ -29,7 +29,6 @@ public class AbilityWall : Ability
                 destination = ray.GetPoint(75);
         }
 
-        AudioManager.Instance.Play(AudioManager.SoundType.Wall);
         InstantiateWall();
     }
 
