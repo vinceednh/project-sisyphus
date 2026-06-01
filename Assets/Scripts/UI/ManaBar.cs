@@ -41,6 +41,11 @@ public class ManaBar : MonoBehaviour
         return true;
     }
 
+    public float GetMana()
+    {
+        return currentMana;
+    }
+
     // Tests for mana
     private void Update()
     {

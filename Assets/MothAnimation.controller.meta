@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/MothAnimation.controller.meta
+guid: 1df60659aa59e8942b6f423801b205e0
+========
+guid: 6ecb0521f6d0e4c82bc8aaa5107d92f4
+>>>>>>>> 594a76a5d0a23c7b28231aa04fd9a25d83965b76:Assets/Extracted_Materials/NavMesh-NavMesh Surface.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

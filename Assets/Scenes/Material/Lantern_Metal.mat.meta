@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Material/Lantern_Metal.mat.meta
 guid: 7c00f4022bc90454b86ecaf77994258a
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
+========
+guid: ef22e4804d8bd964a806a16eaa2af5eb
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+>>>>>>>> cff0a01f7c792f58892666baa2df2ee7860ceb53:Assets/Resources.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -8,7 +8,7 @@ public class HealthInteractable : BaseInteractable
     {
         var hb = InteractableManager.Instance != null
             ? InteractableManager.Instance.HealthBar
-            : FindFirstObjectByType<HealthBar>();
+            : FindAnyObjectByType<HealthBar>();
 
         if (hb != null) hb.TryIncreaseHealth(healAmount);
 

@@ -34,12 +34,12 @@ public class InteractableManager : MonoBehaviour
     {
         // Optional convenience: if you forget to assign these in the inspector,
         // we try to find them once at startup.
-        if (healthBar == null) healthBar = FindFirstObjectByType<HealthBar>();
-        if (manaBar == null) manaBar = FindFirstObjectByType<ManaBar>();
-        if (abilityOne == null) abilityOne = FindFirstObjectByType<AbilityOne>();
-        if (abilityTwo == null) abilityTwo = FindFirstObjectByType<AbilityTwo>();
-        if (abilityThree == null) abilityThree = FindFirstObjectByType<AbilityThree>();
-        if (abilityFour == null) abilityFour = FindFirstObjectByType<AbilityFour>();
+        if (healthBar == null) healthBar = FindAnyObjectByType<HealthBar>();
+        if (manaBar == null) manaBar = FindAnyObjectByType<ManaBar>();
+        if (abilityOne == null) abilityOne = FindAnyObjectByType<AbilityOne>();
+        if (abilityTwo == null) abilityTwo = FindAnyObjectByType<AbilityTwo>();
+        if (abilityThree == null) abilityThree = FindAnyObjectByType<AbilityThree>();
+        if (abilityFour == null) abilityFour = FindAnyObjectByType<AbilityFour>();
         
         // Update beacon counter UI
         UpdateBeaconCounterUI();
@@ -133,4 +133,5 @@ public class InteractableManager : MonoBehaviour
     public AbilityTwo AbilityTwo => abilityTwo;
     public AbilityThree AbilityThree => abilityThree;
     public AbilityFour AbilityFour => abilityFour;
+    public int BeaconsActivated => beaconsActivated;
 }
