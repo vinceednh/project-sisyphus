@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject playerArmature;
     
     bool isPaused = false;
 
@@ -23,6 +24,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        playerArmature.GetComponent<UnityEngine.InputSystem.PlayerInput>().enabled = false;
         isPaused = true;
     }
 
@@ -32,6 +34,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        playerArmature.GetComponent<UnityEngine.InputSystem.PlayerInput>().enabled = true;
         isPaused = false;
     }
 
