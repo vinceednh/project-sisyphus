@@ -12,6 +12,6 @@ public class HealthInteractable : BaseInteractable
 
         if (hb != null) hb.TryIncreaseHealth(healAmount);
 
-        base.OnInteract();
+        Destroy(gameObject);
     }
 }

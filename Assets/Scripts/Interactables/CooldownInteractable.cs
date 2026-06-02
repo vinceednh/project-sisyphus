@@ -24,6 +24,6 @@ public class CooldownInteractable : BaseInteractable
             if (a4 != null) a4.RefreshCooldown();
         }
 
-        base.OnInteract();
+        Destroy(gameObject);
     }
 }

@@ -12,6 +12,6 @@ public class ManaInteractable : BaseInteractable
 
         if (mb != null) mb.TryIncreaseMana(regenAmount);
 
-        base.OnInteract();
+        Destroy(gameObject);
     }
 }

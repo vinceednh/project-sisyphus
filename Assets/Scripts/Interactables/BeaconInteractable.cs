@@ -6,6 +6,9 @@ public class BeaconInteractable : BaseInteractable
 
     protected override void OnInteract()
     {
+        // Only allow interaction once
+        if (HasInteracted) return;
+
         var hb = InteractableManager.Instance != null
             ? InteractableManager.Instance.HealthBar
             : FindFirstObjectByType<HealthBar>();
