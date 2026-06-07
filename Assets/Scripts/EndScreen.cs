@@ -1,0 +1,30 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
+
+public class EndScreenManager : MonoBehaviour
+{
+    public Image fadeImage;
+    public float fadeDuration = 1.5f;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            StartCoroutine(FadeAndLoad());
+        }
+    }
+
+    IEnumerator FadeAndLoad()
+    {
+        float timer = 0;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            fadeImage.color = new Color(0, 0, 0, timer / fadeDuration);
+            yield return null;
+        }
+        SceneManager.LoadScene("Title");
+    }
+}
