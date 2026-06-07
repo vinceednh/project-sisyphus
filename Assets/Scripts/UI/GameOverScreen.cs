@@ -1,77 +1,54 @@
+
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
 
 public class GameOverScreen : MonoBehaviour
 {
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private InteractableManager interactableManager;
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private TextMeshProUGUI gameOverText;
-    [SerializeField] private Button gameOverButton;
-    [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private Image fadeImage;
 
     private bool gameOverTriggered = false;
 
     private void Start()
     {
-        // Find references if not assigned in inspector
         if (healthBar == null) healthBar = FindAnyObjectByType<HealthBar>();
         if (interactableManager == null) interactableManager = FindAnyObjectByType<InteractableManager>();
 
-        // Hide game over screen initially
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(false);
-
-        // Setup button listener
-        if (gameOverButton != null)
-            gameOverButton.onClick.AddListener(OnGameOverButtonClicked);
+        if (fadeImage != null) fadeImage.color = new Color(0, 0, 0, 0);
     }
 
     private void Update()
     {
         if (gameOverTriggered) return;
 
-        // Check if health reached 0 (loss condition)
         if (healthBar != null && healthBar.CurrentHealth <= 0)
         {
-            ShowGameOver("GAME OVER", "TRY AGAIN");
             gameOverTriggered = true;
+            StartCoroutine(FadeAndLoad(SceneManager.GetActiveScene().name));
         }
-        // Check if all 5 beacons activated (win condition)
         else if (interactableManager != null && interactableManager.BeaconsActivated >= 5)
         {
-            ShowGameOver("YOU WON", "PLAY AGAIN");
             gameOverTriggered = true;
+            StartCoroutine(FadeAndLoad("End"));
         }
     }
 
-    private void ShowGameOver(string text, string buttonLabel)
+    IEnumerator FadeAndLoad(string sceneName)
     {
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true);
+        float timer = 0;
+        float fadeDuration = 1.5f;
 
-        // Fade background to black
-        if (backgroundImage != null)
+        while (timer < fadeDuration)
         {
-            backgroundImage.color = new Color(0, 0, 0, 1f); // Fully opaque black
+            timer += Time.deltaTime;
+            if (fadeImage != null)
+                fadeImage.color = new Color(0, 0, 0, timer / fadeDuration);
+            yield return null;
         }
 
-        if (gameOverText != null)
-            gameOverText.text = text;
-
-        if (buttonText != null)
-            buttonText.text = buttonLabel;
-
-        // Enable cursor so player can click button
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    private void OnGameOverButtonClicked()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(sceneName);
     }
 }
