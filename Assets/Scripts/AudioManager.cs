@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
         Light,
         EnemyFly,
         EnemyAttack,
+        EnemyAttack2,
+        EnemyAttack3,
     }
 
     [System.Serializable]
@@ -53,7 +55,24 @@ public class AudioManager : MonoBehaviour
         //Ambient music
         ChangeMusic(SoundType.Ambient);
     }
+
     public void Play(SoundType type)
+    {
+        PlayInternal(type, Vector3.zero, false);
+    }
+
+    public void Play(SoundType type, Transform followTransform)
+    {
+        Vector3 position = followTransform != null ? followTransform.position : Vector3.zero;
+        PlayInternal(type, position, true);
+    }
+
+    public void PlayAtPosition(SoundType type, Vector3 position)
+    {
+        PlayInternal(type, position, true);
+    }
+
+    private void PlayInternal(SoundType type, Vector3 position, bool spatial)
     {
         //Make sure there's a sound assigned to your specified type
         if (!_soundDictionary.TryGetValue(type, out Sound s))
@@ -62,13 +81,28 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        if (s.Clip == null)
+        {
+            Debug.LogWarning($"Sound type {type} has no clip assigned!");
+            return;
+        }
+
         //Creates a new sound object
         var soundObj = new GameObject($"Sound_{type}");
+        soundObj.transform.position = position;
         var audioSrc = soundObj.AddComponent<AudioSource>();
 
         //Assigns your sound properties
         audioSrc.clip = s.Clip;
         audioSrc.volume = s.Volume;
+        audioSrc.spatialBlend = spatial ? 1f : 0f;
+        if (spatial)
+        {
+            audioSrc.rolloffMode = AudioRolloffMode.Logarithmic;
+            audioSrc.minDistance = 1.5f;
+            audioSrc.maxDistance = 25f;
+        }
+        audioSrc.playOnAwake = false;
 
         //Play the sound
         audioSrc.Play();
@@ -76,6 +110,7 @@ public class AudioManager : MonoBehaviour
         //Destroy the object
         Destroy(soundObj, s.Clip.length);
     }
+
     public void ChangeMusic(SoundType type)
     {
         if (!_soundDictionary.TryGetValue(type, out Sound track))
@@ -89,6 +124,8 @@ public class AudioManager : MonoBehaviour
             var container = new GameObject("SoundTrackObj");
             _musicSource = container.AddComponent<AudioSource>();
             _musicSource.loop = true;
+            _musicSource.spatialBlend = 0f;
+            _musicSource.playOnAwake = false;
         }
 
         _musicSource.clip = track.Clip;

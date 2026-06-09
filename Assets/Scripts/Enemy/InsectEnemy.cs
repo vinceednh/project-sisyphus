@@ -255,7 +255,7 @@ public class InsectEnemy : EnemyBase
     {
         state = State.Flying;
         anim.SetBool(HashFlying, true);
-        AudioManager.Instance.Play(AudioManager.SoundType.EnemyFly);
+        AudioManager.Instance.Play(AudioManager.SoundType.EnemyFly, transform);
         anim.SetBool(HashAttacking, false);
     }
 
@@ -314,8 +314,26 @@ public class InsectEnemy : EnemyBase
     {
         if (state != State.Attacking) return;
         DoAttack();
-        AudioManager.Instance.Play(AudioManager.SoundType.EnemyAttack);
+        PlayAttackSound();
 
+    }
+
+    private void PlayAttackSound()
+    {
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                AudioManager.Instance.Play(AudioManager.SoundType.EnemyAttack, transform);
+                break;
+
+            case 1:
+                AudioManager.Instance.Play(AudioManager.SoundType.EnemyAttack2, transform);
+                break;
+
+            case 2:
+                AudioManager.Instance.Play(AudioManager.SoundType.EnemyAttack3, transform);
+                break;
+        }
     }
 
     private void SetAnimIdle()

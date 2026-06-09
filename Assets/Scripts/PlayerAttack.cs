@@ -37,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
         Vector3 aimDirection = GetAimDirection();
         Vector3 spawnPosition = spawnPoint.position + aimDirection * spawnForwardOffset;
 
+        AudioManager.Instance.Play(AudioManager.SoundType.Bolt);
+
         GameObject projectileObject = projectilePrefab != null
             ? Instantiate(projectilePrefab, spawnPosition, Quaternion.LookRotation(aimDirection))
             : CreateDefaultProjectile(spawnPosition, aimDirection);

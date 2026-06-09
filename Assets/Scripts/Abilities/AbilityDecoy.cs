@@ -32,7 +32,7 @@ public class AbilityDecoy : Ability
                 destination = ray.GetPoint(75);
         }
 
-        AudioManager.Instance.Play(AudioManager.SoundType.Decoy);
+        AudioManager.Instance.PlayAtPosition(AudioManager.SoundType.Decoy, destination);
         InstantiateDecoy();
     }
 

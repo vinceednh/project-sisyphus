@@ -8,10 +8,11 @@ public class ProjectileMine : MonoBehaviour
     private int damage = 50;
     void OnCollisionEnter(Collision co)
     {
-        AudioManager.Instance.Play(AudioManager.SoundType.Detonate);
         if(co.gameObject.tag != "Projectile" && co.gameObject.tag != "Player" && !collided)
         {
             collided = true;
+
+            AudioManager.Instance.PlayAtPosition(AudioManager.SoundType.Detonate, co.contacts[0].point);
 
             var impact = Instantiate(impactVFX, co.contacts[0].point, Quaternion.identity) as GameObject;
 
