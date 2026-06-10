@@ -51612,7 +51612,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 45e9c31c3a6c647b7951223e731f900c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 06991b959dcfad64e826e060cf9b989c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1339878652
 Transform:
@@ -83900,27 +83900,27 @@ MonoBehaviour:
   AllSounds:
   - Type: 0
     Clip: {fileID: 8300000, guid: 72d2cec87308fa34abd95fc05c100b6f, type: 3}
-    Volume: 0.25
+    Volume: 0.15
     Source: {fileID: 0}
   - Type: 1
     Clip: {fileID: 8300000, guid: 4cd178647c07dbe6f9987f21d0f5c282, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Source: {fileID: 0}
   - Type: 3
     Clip: {fileID: 8300000, guid: 1a91fcd19acf1e54bba0945d9f390849, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Source: {fileID: 0}
   - Type: 4
     Clip: {fileID: 8300000, guid: b70c40dfcbbda0482a8e359856f9ed9e, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Source: {fileID: 0}
   - Type: 5
     Clip: {fileID: 8300000, guid: de9c316e3b2fe4e3e9e33808e0493a42, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Source: {fileID: 0}
   - Type: 6
     Clip: {fileID: 8300000, guid: 5672989348f900b28beaffbf9fb7ae5f, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Source: {fileID: 0}
   - Type: 7
     Clip: {fileID: 8300000, guid: d4f7e236275fdf2489009c3557e76fa5, type: 3}
@@ -83928,11 +83928,19 @@ MonoBehaviour:
     Source: {fileID: 0}
   - Type: 2
     Clip: {fileID: 8300000, guid: 29841e7d5bbfb5b419c9ad16ca8bc4c1, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Source: {fileID: 0}
   - Type: 8
     Clip: {fileID: 8300000, guid: ec726f5ff7206fdcf9bc513a0f247fbe, type: 3}
-    Volume: 0.5
+    Volume: 0.3
+    Source: {fileID: 0}
+  - Type: 9
+    Clip: {fileID: 8300000, guid: b9aa28de95629d54a9eb01a6087f42ea, type: 3}
+    Volume: 0.3
+    Source: {fileID: 0}
+  - Type: 10
+    Clip: {fileID: 8300000, guid: 8d31da0d944903145baefb4e4db89f77, type: 3}
+    Volume: 0.3
     Source: {fileID: 0}
 --- !u!4 &2110779161
 Transform:
