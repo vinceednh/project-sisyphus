@@ -31,7 +31,7 @@ public class AbilityShield : Ability
                 destination = ray.GetPoint(75);
         }
 
-        AudioManager.Instance.Play(AudioManager.SoundType.Shield);
+        AudioManager.Instance.PlayAtPosition(AudioManager.SoundType.Shield, firePoint.position);
         InstantiateShield();
     }
 

@@ -29,7 +29,7 @@ public class AbilityBolt : Ability
                 destination = hit.point;
             else
                 destination = ray.GetPoint(75);
-            AudioManager.Instance.Play(AudioManager.SoundType.Bolt);
+            AudioManager.Instance.PlayAtPosition(AudioManager.SoundType.Bolt, firePoint.position);
             InstantiateProjectile();
         }
     }

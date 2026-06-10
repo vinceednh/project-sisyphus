@@ -30,7 +30,7 @@ public class AbilityMine : Ability
                 destination = ray.GetPoint(75);
         }
 
-        AudioManager.Instance.Play(AudioManager.SoundType.PlaceMine);
+        AudioManager.Instance.PlayAtPosition(AudioManager.SoundType.PlaceMine, destination);
         InstantiateMine();
     }
 
