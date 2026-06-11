@@ -9,6 +9,7 @@ public class AbilityCloud : Ability
         activeTime = 10f;
         abilityName = "Poison Cloud";
         manaCost = 50f;
+        icon = Resources.Load<Sprite>("poison");
     }
 
     // Cloud Variables

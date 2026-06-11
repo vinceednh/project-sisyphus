@@ -9,6 +9,7 @@ public class AbilityShield : Ability
         activeTime = 10f;
         abilityName = "Shield";
         manaCost = 60f;
+        icon = Resources.Load<Sprite>("shield");
     }
 
     // Shield Variables

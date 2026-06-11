@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Ability : ScriptableObject
 {
@@ -8,6 +9,7 @@ public abstract class Ability : ScriptableObject
     public Camera cam;
     public Transform firePoint;
     public float manaCost;
+    public Sprite icon;
     protected virtual void Awake()
     {
         cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
