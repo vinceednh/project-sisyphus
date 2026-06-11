@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Time.timeScale > 0 && Input.GetMouseButtonDown(0))
             FireProjectile();
     }
 

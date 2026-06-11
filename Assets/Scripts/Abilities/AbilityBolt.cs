@@ -17,27 +17,19 @@ public class AbilityBolt : Ability
     public GameObject projectile = Resources.Load<GameObject>("vfx_magicBolt");
     public float projectileSpeed = 30f;
 
-    private Vector3 destination;
-
     public override void UseAbility()
     {
         if (cam != null)
         {
-            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-                destination = hit.point;
-            else
-                destination = ray.GetPoint(75);
+            Vector3 aimDirection = cam.transform.forward.normalized;
             AudioManager.Instance.PlayAtPosition(AudioManager.SoundType.Bolt, firePoint.position);
-            InstantiateProjectile();
+            InstantiateProjectile(aimDirection);
         }
     }
 
-    public void InstantiateProjectile()
+    public void InstantiateProjectile(Vector3 direction)
     {
-        var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
-        projectileObj.GetComponent<Rigidbody>().linearVelocity = (firePoint.position - destination).normalized * projectileSpeed;
+        var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.LookRotation(direction)) as GameObject;
+        projectileObj.GetComponent<Rigidbody>().linearVelocity = direction * projectileSpeed;
     }
 }
