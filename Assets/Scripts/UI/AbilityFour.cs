@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class AbilityFour : MonoBehaviour
 {
+    public Image icon;
     public Image coolDown;
     private bool cooling = false;
     public float rate;
@@ -22,7 +23,7 @@ public class AbilityFour : MonoBehaviour
         mana = FindAnyObjectByType<ManaBar>();
 
         ability = new AbilityMine();
-        // ability = new AbilityCloud();
+        icon.sprite = ability.icon;
     }
 
     void Update()

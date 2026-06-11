@@ -10,6 +10,7 @@ public class AbilityMine : Ability
         activeTime = 5f;
         abilityName = "Mine";
         manaCost = 20f;
+        icon = Resources.Load<Sprite>("mine");
     }
 
     // Mine Variables

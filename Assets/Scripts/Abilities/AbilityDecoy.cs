@@ -10,6 +10,7 @@ public class AbilityDecoy : Ability
         activeTime = 5f;
         abilityName = "Decoy";
         manaCost = 30f;
+        icon = Resources.Load<Sprite>("decoy");
     }
 
     // Decoy Variables

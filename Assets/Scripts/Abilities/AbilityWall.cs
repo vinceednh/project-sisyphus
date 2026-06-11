@@ -9,6 +9,7 @@ public class AbilityWall : Ability
         activeTime = 5f;
         abilityName = "Wall";
         manaCost = 15f;
+        icon = Resources.Load<Sprite>("wall");
     }
 
     // Wall Variables

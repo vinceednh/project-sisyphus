@@ -10,6 +10,7 @@ public class AbilityBolt : Ability
         activeTime = 1.0f;
         abilityName = "Magic Bolt";
         manaCost = 10f;
+        icon = Resources.Load<Sprite>("bolt");
     }
 
     // Bolt Variables
